@@ -1,0 +1,22 @@
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: DeliveryPipeline
+metadata:
+  name: default-delivery-pipeline
+description: Default Delivery Pipeline
+serialPipeline:
+  stages:
+  - targetId: default-dev-service
+    profiles: [dev]
+  - targetId: default-test-service
+    profiles: [test]
+  - targetId: default-prod-service
+    profiles: [prod]
+    strategy:
+      canary:
+        runtimeConfig:
+          cloudRun:
+            automaticTrafficControl: true
+        canaryDeployment:
+          percentages: [30, 60, 90]
+          verify: false

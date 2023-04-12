@@ -1,0 +1,20 @@
+---
+apiVersion: skaffold/v3alpha1
+kind: Config
+metadata: 
+  name: deploy-to-cloudrun
+profiles:
+- name: dev
+  manifests:
+    rawYaml:
+    - cloudrun/default-dev-service.yaml
+- name: test
+  manifests:
+    rawYaml:
+    - cloudrun/default-test-service.yaml
+- name: prod
+  manifests:
+    rawYaml:
+    - cloudrun/default-prod-service.yaml
+deploy:
+  cloudrun: {}

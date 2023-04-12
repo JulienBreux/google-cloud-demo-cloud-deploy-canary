@@ -1,0 +1,8 @@
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: default-dev-service
+description: Development service
+run:
+  location: projects/clouddeploycanary/locations/us-central1

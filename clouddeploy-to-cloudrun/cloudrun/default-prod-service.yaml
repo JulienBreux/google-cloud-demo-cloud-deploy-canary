@@ -1,0 +1,14 @@
+---
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: default-prod-service
+  labels:
+    cloud.googleapis.com/location: us-central1
+  annotations:
+    run.googleapis.com/ingress: all
+spec:
+  template:
+    spec:
+      containers:
+      - image: us-docker.pkg.dev/clouddeploycanary/default/app
